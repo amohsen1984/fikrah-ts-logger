@@ -1,0 +1,45 @@
+{
+  "name": "fikrah-ts-logger",
+  "version": "0.0.1",
+  "description": "A TypeScript logger package",
+  "private": true,
+  "scripts": {
+    "build": "(rm -rf ./lib || 0) && tsc",
+    "build:pre-commit": "yarn build && git add lib src",
+    "fikrah:lint": "tslint 'src/**/*.ts'",
+    "fikrah:lint:fix": "tslint --fix 'src/**/*.ts'",
+    "fikrah:format": "prettier --write 'src/**/*.ts'",
+    "test": "mocha -r ts-node/register tests/**/*.{test,spec}.ts"
+  },
+  "pre-commit": [
+    "fikrah:lint",
+    "fikrah:format",
+    "build:pre-commit"
+  ],
+  "keywords": [],
+  "author": "Abdulelelah Ashour",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "devDependencies": {
+    "@types/assert": "^1.4.2",
+    "@types/chai": "^4.1.7",
+    "@types/json-stringify-safe": "^5.0.0",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.9.5",
+    "chai": "^4.2.0",
+    "fikrah-ts-standards": "https://github.com/amohsen1984/fikrah-ts-standards.git",
+    "mocha": "^5.2.0",
+    "nyc": "^14.0.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.0.2",
+    "tslint": "^6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.3"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "json-stringify-safe": "^5.0.1",
+    "tslint-plugin-prettier": "^2.2.0"
+  }
+}
